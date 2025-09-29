@@ -113,12 +113,12 @@ public class PatioRepositorio : IRepositorio<Patio>
         }
         catch (OperationCanceledException ex)
         {
-            throw new ExcecaoBancoDados("Falha, operação cancelada ao remover patio do banco de dados", nameof(patio),
+            throw new ExcecaoBancoDados("Falha, operação cancelada ao remover patio do banco de dados", nameof(Patio),
                 ex);
         }
         catch (DbUpdateException ex)
         {
-            throw new ExcecaoBancoDados("Falha ao salvar remoção de patio no banco de dados", nameof(patio),
+            throw new ExcecaoBancoDados("Falha ao salvar remoção de patio no banco de dados", nameof(Patio),
                 innerException: ex);
         }
     }
