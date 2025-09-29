@@ -1,0 +1,11 @@
+ACR_RESOURCE_GROUP="rg-smartpatio"
+ACR_NAME="smartpatioregistry" # ESCOLHA UM NOME ÚNICO E EM LETRAS MINÚSCULAS
+ACR_LOCATION="brazilsouth"
+
+az group create --name $ACR_RESOURCE_GROUP --location $ACR_LOCATION
+
+az acr create \
+  --resource-group $ACR_RESOURCE_GROUP \
+  --name $ACR_NAME \
+  --sku Basic \
+  --admin-enabled true
