@@ -11,6 +11,7 @@ using Aplicacao.Servicos.Mottu;
 using Dominio.Interfaces.Mottu;
 using Dominio.Persistencia.Mottu;
 using Infraestrutura.Repositorios.Mottu;
+using Microsoft.EntityFrameworkCore.SqlServer.Infrastructure.Internal;
 
 // TODO: adicionar logica de vinculo usuario patio
 // TODO: adicionar logica de moto com patio
@@ -66,7 +67,13 @@ try
     var connectionString = Environment.GetEnvironmentVariable("ConnectionString__SqlServer") ??
                            builder.Configuration.GetConnectionString("SqlServer");
     builder.Services.AddDbContext<AppDbContext>(options =>
-        options.UseSqlServer(connectionString));
+        options.UseSqlServer(connectionString, sqlServerOptions =>
+        {
+            sqlServerOptions.EnableRetryOnFailure(
+                maxRetryCount: 5,
+                maxRetryDelay: TimeSpan.FromSeconds(10),
+                errorNumbersToAdd: null);
+        }));
 }
 catch (ArgumentNullException)
 {
@@ -90,14 +97,28 @@ builder.Services.AddScoped<CarrapatoServico>();
 
 var app = builder.Build();
 
+// Aplicar migrações ao iniciar a aplicação
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        dbContext.Database.Migrate();
+        Console.WriteLine("INFO: Migrações aplicadas com sucesso.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"ERRO: Falha ao aplicar migrações. Detalhes: {ex.Message}");
+        Console.WriteLine(ex.StackTrace);
+    }
+}
+
+
 // Configure the HTTP request pipeline.
 if (app.Environment.IsDevelopment() || app.Environment.IsProduction())
 {
     app.UseSwagger();
-    app.UseSwaggerUI(c =>
-    {
-        c.SwaggerEndpoint("/swagger/v2/swagger.json", "API de filiais e motos Mottu v2");
-    });
+    app.UseSwaggerUI(c => { c.SwaggerEndpoint("/swagger/v2/swagger.json", "API de filiais e motos Mottu v2"); });
 }
 
 app.UseHttpsRedirection();
