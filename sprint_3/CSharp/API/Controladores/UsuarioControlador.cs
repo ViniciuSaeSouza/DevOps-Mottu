@@ -133,11 +133,11 @@ public class UsuarioControlador : ControllerBase
     /// <param name="id">O ID do usuário a ser atualizado.</param>
     /// <param name="dto">Os dados do usuário a serem atualizados.</param>
     /// <returns>
-    /// Retorna 200 OK com os detalhes do usuário atualizado.
-    /// Retorna 404 Not Found se o usuário com o ID fornecido não for encontrado.
-    /// Retorna 400 Bad Request se os dados fornecidos forem inválidos.
-    /// Retorna 500 Internal Server Error se ocorrer um erro interno no servidor.
-    /// Retorna 503 Service Unavailable se o serviço estiver temporariamente indisponível.
+    /// 200 OK com os detalhes do usuário atualizado.<br/>
+    /// 404 Not Found se o usuário com o ID fornecido não for encontrado.<br/>
+    /// 400 Bad Request se os dados fornecidos forem inválidos.<br/>
+    /// 500 Internal Server Error se ocorrer um erro interno no servidor.<br/>
+    /// 503 Service Unavailable se o serviço estiver temporariamente indisponível.
     /// </returns>
     [HttpPut("{id:int}")]
     [ProducesResponseType(StatusCodes.Status200OK)]
