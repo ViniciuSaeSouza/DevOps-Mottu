@@ -8,7 +8,7 @@ public class Moto
     public int Id { get; private set; }
     public string Placa { get; private set; }
     public string Chassi { get; private set; }
-    public ModeloMotoEnum Modelo { get; private set; }
+    public ModeloMotoEnum Modelo { get; set; }
     public ZonaEnum Zona { get; set; }
     public int IdPatio { get; set; }
     public Patio Patio { get; set; }
@@ -29,7 +29,7 @@ public class Moto
         ValidarPlaca(placa);
         ValidarChassi(chassi);
         Placa = placa.ToUpper();
-        DefinirModelo((int)modelo);
+        Modelo = modelo;
         this.IdPatio = idPatio;
         Patio = patio;
         Zona = ZonaEnum.Saguao;
@@ -62,32 +62,13 @@ public class Moto
             throw new ExcecaoDominio("Placa deve ter no mínimo 6 e no máximo 7 caracteres.", nameof(placa));
         }
     }
-
-    private void ValidarModelo(int? modelo)
-    {
-        if (!Enum.IsDefined(typeof(ModeloMotoEnum), modelo))
-        {
-            throw new ExcecaoDominio("Modelo inválido.", nameof(modelo));
-        }
-    }
-
-    private void DefinirModelo(int modelo)
-    {
-        ValidarModelo(modelo);
-        Modelo = (ModeloMotoEnum)Enum.Parse(typeof(ModeloMotoEnum), modelo.ToString());
-    }
+    
 
     public void AlterarPlaca(string novaPlaca)
     {
         ValidarNuloVazio((nameof(novaPlaca), novaPlaca));
         ValidarPlaca(novaPlaca);
         Placa = novaPlaca.ToUpper();
-    }
-
-    public void AlterarModelo(int? modelo)
-    {
-        ValidarNuloVazio((nameof(modelo), modelo));
-        DefinirModelo((int)modelo!);
     }
 
     public void AlterarFilial(int novoIdFilial, Patio novoPatio)
