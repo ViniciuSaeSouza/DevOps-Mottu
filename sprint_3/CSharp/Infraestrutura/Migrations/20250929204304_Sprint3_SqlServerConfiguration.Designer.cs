@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace Infraestrutura.Migrations
 {
     [DbContext(typeof(AppDbContext))]
-    [Migration("20250929164946_Sprint3_Initial")]
-    partial class Sprint3_Initial
+    [Migration("20250929210240_Sprint3_SqlServerConfiguration")]
+    partial class Sprint3_SqlServerConfiguration
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
