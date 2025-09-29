@@ -41,7 +41,6 @@ public class PatioRepositorio : IRepositorio<Patio>
         try
         {
             _context.Patios.Update(patio);
-            _context.Entry(patio).State = EntityState.Modified;
             await _context.SaveChangesAsync();
 
             return patio;
