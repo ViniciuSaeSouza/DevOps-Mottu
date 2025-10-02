@@ -780,8 +780,6 @@ DELETE FROM MOTOS WHERE Placa = N'VID1A23';
 - **Auto-shutdown**: Programar parada do ACI em horários não-comerciais (-50%)
 - **Reserved Instances**: Desconto de até 30% com commitment de 1 ano
 
-**Detalhes completos**: `Info_custos.pdf`
-
 ---
 
 ## 🔧 Troubleshooting
