@@ -886,7 +886,7 @@ docker build -t mottu-api:latest . --no-cache
 
 ### 🏆 Integrantes
 
-| Nome | RM | Função |
+| Nome | RM | GitHub |
 |------|----|---------|
 | **Laura de Oliveira Cintra** | RM 558843 | [@lauracintra](https://github.com/Laura-Cintra) 
 | **Maria Eduarda Alves da Paixão** | RM 558832 | [@mariaeduarda](https://github.com/MariaEdPaixao) 
