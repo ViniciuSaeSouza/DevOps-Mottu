@@ -888,9 +888,9 @@ docker build -t mottu-api:latest . --no-cache
 
 | Nome | RM | Função | GitHub |
 |------|----|---------| --------|
-| **Laura de Oliveira Cintra** | RM 558843 | [@lauracintra](https://github.com/lauracintra) |
-| **Maria Eduarda Alves da Paixão** | RM 558832 | [@mariaeduarda](https://github.com/mariaeduarda) |
-| **Vinícius Saes de Souza** | RM 554456 | [@viniciussaes](https://github.com/viniciussaes) |
+| **Laura de Oliveira Cintra** | RM 558843 | [@lauracintra](https://github.com/Laura-Cintra) |
+| **Maria Eduarda Alves da Paixão** | RM 558832 | [@mariaeduarda](https://github.com/MariaEdPaixao) |
+| **Vinícius Saes de Souza** | RM 554456 | [@viniciussaes](https://github.com/ViniciuSaeSouza) |
 
 
 ### 📞 Contato

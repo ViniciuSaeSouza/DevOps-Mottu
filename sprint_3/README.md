@@ -888,14 +888,10 @@ docker build -t mottu-api:latest . --no-cache
 
 | Nome | RM | Função | GitHub |
 |------|----|---------| --------|
-| **Laura de Oliveira Cintra** | RM 558843 | Arquiteta de Software | [@lauracintra](https://github.com/lauracintra) |
-| **Maria Eduarda Alves da Paixão** | RM 558832 | DevOps Engineer | [@mariaeduarda](https://github.com/mariaeduarda) |
-| **Vinícius Saes de Souza** | RM 554456 | Tech Lead | [@viniciussaes](https://github.com/viniciussaes) |
+| **Laura de Oliveira Cintra** | RM 558843 | [@lauracintra](https://github.com/Laura-Cintra) |
+| **Maria Eduarda Alves da Paixão** | RM 558832 | [@mariaeduarda](https://github.com/MariaEdPaixao) |
+| **Vinícius Saes de Souza** | RM 554456 | [@viniciussaes](https://github.com/ViniciuSaeSouza) |
 
-### 🎯 Especialidades da Equipe
-- **Clean Architecture & DDD**: Laura Cintra
-- **Azure Cloud & DevOps**: Maria Eduarda  
-- **.NET Core & APIs**: Vinícius Saes
 
 ### 📞 Contato
 - **Email**: prismacode3@gmail.com
