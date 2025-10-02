@@ -717,50 +717,6 @@ WHERE Id = (SELECT MAX(Id) FROM MOTOS);
 DELETE FROM MOTOS WHERE Placa = N'VID1A23';
 ```
 
-### 🎬 Roteiro do Vídeo (Mínimo 720p, Áudio Claro)
-
-#### **Parte 1: Introdução (2 min)**
-- Apresentação da equipe Prisma.Code
-- Visão geral da solução Mottu
-- Objetivos da Sprint 3
-
-#### **Parte 2: Demonstração do Código (3 min)**
-- Clone do repositório GitHub
-- Explicação da arquitetura Clean Architecture
-- Mostrar estrutura de pastas e organização
-
-#### **Parte 3: Deploy na Azure (8 min)**
-- Execução passo a passo dos comandos CLI
-- Criação dos recursos Azure
-- Build e push da imagem Docker
-- Deploy no ACI
-
-#### **Parte 4: Configuração do Banco (3 min)**
-- Execução do script_bd.sql
-- Inserção dos dados de exemplo
-- Verificação das tabelas criadas
-
-#### **Parte 5: CRUD Detalhado no Banco (6 min)**
-- **CREATE**: Inserção via SQL
-- **READ**: Consultas diretas no banco
-- **UPDATE**: Modificação de registros
-- **DELETE**: Remoção de dados
-- Verificação de integridade referencial
-
-#### **Parte 6: Testes da API (3 min)**
-- Acesso ao Swagger
-- Testes dos endpoints REST
-- Demonstração de funcionamento
-
-#### **Parte 7: Conclusão (1 min)**
-- Benefícios implementados
-- Próximos passos
-- Agradecimentos
-
-**Duração Total**: ~25 minutos  
-**Qualidade**: Mínimo 720p  
-**Áudio**: Explicação por voz (sem legendas)
-
 ---
 
 ## 📄 Arquivos de Entrega
@@ -903,17 +859,9 @@ docker build -t mottu-api:latest . --no-cache
 ## 📚 Referências e Links
 
 ### 🔗 Links Importantes
-- **Repositório GitHub**: [https://github.com/seu-usuario/mottu-devops](https://github.com/seu-usuario/mottu-devops)
-- **Vídeo YouTube**: [https://youtube.com/watch?v=VIDEO-ID](https://youtube.com/watch?v=VIDEO-ID)
-- **Documentação Azure**: [https://docs.microsoft.com/azure](https://docs.microsoft.com/azure)
+- **Repositório GitHub**: [https://github.com/seu-usuario/mottu-devops](https://github.com/ViniciuSaeSouza/DevOps-Mottu)
+- **Vídeo YouTube**: [https://youtu.be/295_X8Sp_nc](https://youtu.be/295_X8Sp_nc)
 - **API Documentation**: [http://SEU-IP:8080/swagger](http://SEU-IP:8080/swagger)
-
-### 📖 Tecnologias Estudadas
-- [Clean Architecture by Uncle Bob](https://blog.cleancoder.com/uncle-bob/2012/08/13/the-clean-architecture.html)
-- [Domain-Driven Design](https://martinfowler.com/bliki/DomainDrivenDesign.html)
-- [Azure Container Instances](https://docs.microsoft.com/azure/container-instances/)
-- [Entity Framework Core](https://docs.microsoft.com/ef/core/)
-
 ---
 
 ## 🏅 Conclusão
