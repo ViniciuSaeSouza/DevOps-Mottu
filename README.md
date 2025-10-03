@@ -1,7 +1,6 @@
-# 🏍️ Mottu DevOps - Sistema de Gestão de Frota
+# 🏍️ SmartPatio - Sistema de Gestão de Frota
 
 > **Sprint 3 - DevOps Tools & Cloud Computing**  
-> **FIAP - 2TDSPJ - Advanced Business Development with .NET**  
 > **Grupo: Prisma.Code**
 
 [![.NET 8](https://img.shields.io/badge/.NET-8.0-purple)](https://dotnet.microsoft.com/)
@@ -35,24 +34,6 @@ A **Mottu DevOps** é uma solução empresarial robusta para gerenciamento compl
 
 ## 💼 Benefícios para o Negócio
 
-### 🎯 Problemas Resolvidos
-
-#### 1. Controle de Frota Descentralizado
-- **Antes**: Planilhas dispersas, informações inconsistentes
-- **Depois**: Sistema centralizado com dados únicos e confiáveis
-
-#### 2. Rastreamento Manual Ineficiente
-- **Antes**: Localização manual, perda de veículos
-- **Depois**: Rastreamento automatizado 24/7 via IoT
-
-#### 3. Processos Operacionais Manuais
-- **Antes**: Check-in/out manual, controle em papel
-- **Depois**: Digitalização completa com workflows automatizados
-
-#### 4. Falta de Visibilidade Gerencial
-- **Antes**: Relatórios manuais, dados defasados
-- **Depois**: Dashboards em tempo real, KPIs automatizados
-
 ### 📈 Melhorias Quantificáveis
 
 | Métrica | Antes | Depois | Melhoria |
@@ -76,38 +57,6 @@ A **Mottu DevOps** é uma solução empresarial robusta para gerenciamento compl
 
 ### Opção de Deploy: **Azure Container Registry (ACR) + Azure Container Instance (ACI)**
 
-```mermaid
-graph TB
-    subgraph "Azure Cloud"
-        subgraph "Resource Group: rg-mottu-prod"
-            ACR[Azure Container Registry<br/>motturegistry.azurecr.io]
-            ACI[Azure Container Instance<br/>aci-mottu-api]
-            DB[(Azure SQL Database<br/>sqlserver-mottu)]
-        end
-        
-        subgraph "Security & Networking"
-            NSG[Network Security Group]
-            VNET[Virtual Network]
-        end
-    end
-    
-    subgraph "Development"
-        DEV[Developer]
-        DOCKER[Docker Build]
-        GITHUB[GitHub Repository]
-    end
-    
-    DEV --> GITHUB
-    GITHUB --> DOCKER
-    DOCKER --> ACR
-    ACR --> ACI
-    ACI --> DB
-    
-    style ACR fill:#0078d4
-    style ACI fill:#00bcf2
-    style DB fill:#cc2936
-```
-
 ### 🗂️ Estrutura do Projeto
 
 ```
@@ -126,9 +75,7 @@ graph TB
 │       ├── 📄 inserts.sql       # Dados de exemplo
 │       └── 📄 inserts.txt       # Dados complementares
 ├── 📁 diagrama/                  # Diagramas de arquitetura
-├── 📁 videos/                    # Vídeos demonstrativos
 ├── 📄 README.md                 # Esta documentação
-└── 📄 Info_custos.pdf           # Análise de custos Azure
 ```
 
 ---
@@ -670,31 +617,6 @@ curl -X DELETE "http://SEU-IP:8080/api/motos/11"
 
 ---
 
-## 🎥 Vídeo Demonstrativo
-
-### 📋 Checklist de Demonstração (70 pontos)
-
-#### ✅ 1. Clone do Repositório GitHub (10 pontos)
-- [x] Demonstrar clone do repositório
-- [x] Mostrar estrutura de pastas
-- [x] Explicar organização do código
-
-#### ✅ 2. Deploy seguindo README.md (20 pontos)
-- [x] Execução dos comandos Azure CLI
-- [x] Criação do Resource Group
-- [x] Configuração do SQL Database
-- [x] Setup do Container Registry
-- [x] Build e push da imagem Docker
-- [x] Deploy no Azure Container Instance
-
-#### ✅ 3. Configuração de App e Banco (20 pontos)
-- [x] Execução dos scripts DDL (`script_bd.sql`)
-- [x] Inserção dos dados de exemplo (`inserts.sql`)
-- [x] Configuração das variáveis de ambiente
-- [x] Teste de conectividade
-
-#### ✅ 4. Demonstração Detalhada do CRUD (20 pontos)
-
 **Tabela MOTOS - Operações diretas no banco**:
 ```sql
 -- CREATE: Inserir nova moto
@@ -716,69 +638,6 @@ WHERE Id = (SELECT MAX(Id) FROM MOTOS);
 -- DELETE: Remover moto
 DELETE FROM MOTOS WHERE Placa = N'VID1A23';
 ```
-
----
-
-## 📄 Arquivos de Entrega
-
-### 📋 Checklist de Entrega (100 pontos)
-
-#### ✅ 1. Desenho da Arquitetura (10 pontos)
-- [x] **Arquivo**: `diagrama/Diagrama_Sprint3.drawio.png`
-- [x] **Conteúdo**: Arquitetura ACR + ACI + Azure SQL
-- [x] **Qualidade**: Diagrama profissional com componentes Azure
-
-#### ✅ 2. DDL das Tabelas (10 pontos)
-- [x] **Arquivo**: `comandos/Sql/script_bd.sql`
-- [x] **Conteúdo**: DDL completo com todas as tabelas
-- [x] **Padrão**: SQL Server syntax
-- [x] **Validação**: Executável sem erros
-
-#### ✅ 3. Repositório GitHub com README (10 pontos)
-- [x] **Repository**: Separado e público
-- [x] **README.md**: Documentação completa (este arquivo)
-- [x] **Instruções**: Deploy passo a passo
-- [x] **Organização**: Código limpo e estruturado
-
-#### ✅ 4. Vídeo Demonstrativo (70 pontos)
-- [x] **Qualidade**: Mínimo 720p
-- [x] **Áudio**: Claro, explicação por voz
-- [x] **Conteúdo**: 
-  - [x] Clone do GitHub
-  - [x] Deploy seguindo README
-  - [x] Configuração de App e Banco
-  - [x] CRUD detalhado no banco de dados
-- [x] **Upload**: YouTube público
-
-### 📄 Documento PDF de Entrega
-
-**Arquivo**: `2TDSPJ_3SPRINT_RM554456.pdf`
-
-**Conteúdo Obrigatório**:
-- ✅ Nome completo e RM de todos os integrantes
-- ✅ Link do repositório no GitHub
-- ✅ Link do vídeo no YouTube
-- ✅ Documentação adicional e prints
-
----
-
-## 💰 Análise de Custos Azure
-
-### 📊 Estimativa Mensal (Região Brazil South)
-
-| Recurso | Especificação | Custo Mensal (USD) |
-|---------|---------------|-------------------|
-| **Azure SQL Database** | Standard S2 (50 DTU) | $30.00 |
-| **Azure Container Registry** | Basic (5GB storage) | $5.00 |
-| **Azure Container Instance** | 1 vCPU, 1.5GB RAM | $45.00 |
-| **Network Egress** | 10GB/mês | $1.00 |
-| **Storage** | Backup e logs | $3.00 |
-| **Total** | | **$84.00/mês** |
-
-### 💡 Otimizações de Custo
-- **Development**: Usar tier Basic do SQL Database (-60%)
-- **Auto-shutdown**: Programar parada do ACI em horários não-comerciais (-50%)
-- **Reserved Instances**: Desconto de até 30% com commitment de 1 ano
 
 ---
 
@@ -849,9 +708,6 @@ docker build -t mottu-api:latest . --no-cache
 
 ### 📞 Contato
 - **Email**: prismacode3@gmail.com
-- **LinkedIn**: [Prisma.Code Team](https://linkedin.com/company/prismacode)
-- **Portfolio**: [prismacode.dev](https://prismacode.dev)
-
 ---
 
 ## 📚 Referências e Links
