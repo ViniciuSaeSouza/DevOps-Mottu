@@ -17,17 +17,17 @@ steps:
     version: '8.x'
   displayName: 'Instalar .NET 8 SDK'
 
-# 2. Restore
-- script: dotnet restore
-  displayName: 'Restore'
+# 2. Restore (apontando para o .sln)
+- script: dotnet restore **/*.sln
+  displayName: 'Restore Solution'
 
 # 3. Build
-- script: dotnet build --configuration $(buildConfiguration)
-  displayName: 'Build'
+- script: dotnet build **/*.sln --configuration $(buildConfiguration)
+  displayName: 'Build Solution'
 
-# 4. Testes (Sprint 4 exige testes)
-- script: dotnet test --configuration $(buildConfiguration) --no-build
-  displayName: 'Testes Unitários'
+# 4. Testes
+- script: dotnet test **/*.csproj --configuration $(buildConfiguration) --no-build
+  displayName: 'Run Tests'
 
 # 5. Publicar artefato
 - task: PublishBuildArtifacts@1
