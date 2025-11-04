@@ -48,7 +48,7 @@ steps:
   displayName: 'Build da imagem Docker'
   inputs:
     command: build
-    Dockerfile: 'Dockerfile'
+    Dockerfile: '/sprint_4/CSharp/Dockerfile'
     tags: |
       $(dockerRegistry)/$(imageName):$(Build.BuildId)
 
