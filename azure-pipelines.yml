@@ -22,11 +22,11 @@ steps:
   displayName: 'Restore Solution'
 
 # 3. Build
-- script: dotnet build **/*.sln --configuration $(buildConfiguration)
+- script: dotnet build sprint4/Csharp/API/*.sln --configuration $(buildConfiguration)
   displayName: 'Build Solution'
 
 # 4. Testes
-- script: dotnet test **/*.csproj --configuration $(buildConfiguration) --no-build
+- script: dotnet test *sprint4/Csharp/API/*.csproj --configuration $(buildConfiguration) --no-build
   displayName: 'Run Tests'
 
 # 5. Publicar artefato
