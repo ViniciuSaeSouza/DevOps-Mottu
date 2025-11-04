@@ -7,7 +7,7 @@ pool:
 variables:
   buildConfiguration: 'Release'
   imageName: 'api-mottu'
-  dockerRegistry: 'acrmottusprint4.azurecr.io'
+  dockerRegistry: 'sprint4acr.azurecr.io'
 
 steps:
 # 1. Instala o .NET SDK
@@ -41,7 +41,7 @@ steps:
   displayName: 'ACR Login'
   inputs:
     command: login
-    containerRegistry: 'acrmottusprint4'   # service connection no Azure DevOps
+    containerRegistry: 'sprint4acr'   # service connection no Azure DevOps
 
 # 7. Build Docker
 - task: Docker@2
