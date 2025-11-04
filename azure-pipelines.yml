@@ -58,9 +58,11 @@ steps:
 - task: Docker@2
   displayName: 'Push da imagem para ACR'
   inputs:
+    containerRegistry: 'sprint4acr'
+    repository: 'api-mottu'
     command: push
     tags: |
-      $(dockerRegistry)/$(imageName):$(Build.BuildId)
+      $(Build.BuildId)
 
 # 9. Publicar metadata para CD
 - task: PublishBuildArtifacts@1
