@@ -10,6 +10,8 @@
 
 Sistema completo de gestão de frota de motos para a empresa **Mottu**, desenvolvido com .NET 8 e implementado na nuvem Azure utilizando **Azure Container Registry (ACR)** e **Azure Container Instance (ACI)**.
 
+teste
+
 ---
 
 ## 📋 Descrição da Solução
