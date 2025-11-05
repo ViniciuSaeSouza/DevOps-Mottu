@@ -64,7 +64,7 @@ builder.Services.AddSwaggerGen(swagger =>
 // Configuração do banco de dados SQL Server
 try
 {
-    var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__SqlServer") ??
+    var connectionString = Environment.GetEnvironmentVariable("ConnectionString__SqlServer") ??
                            builder.Configuration.GetConnectionString("SqlServer");
     builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseSqlServer(connectionString, sqlServerOptions =>
