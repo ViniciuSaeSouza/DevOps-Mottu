@@ -64,7 +64,7 @@ builder.Services.AddSwaggerGen(swagger =>
 // Configuração do banco de dados SQL Server
 try
 {
-    var connectionString = Environment.GetEnvironmentVariable("ConnectionStrings__SqlServer") ??
+    var connectionString = Environment.GetEnvironmentVariable("ConnectionStringsSqlServer") ??
                            builder.Configuration.GetConnectionString("SqlServer");
     builder.Services.AddDbContext<AppDbContext>(options =>
         options.UseSqlServer(connectionString, sqlServerOptions =>
@@ -98,20 +98,20 @@ builder.Services.AddScoped<CarrapatoServico>();
 var app = builder.Build();
 
 // Aplicar migrações ao iniciar a aplicação
-// using (var scope = app.Services.CreateScope())
-// {
-//     try
-//     {
-//         var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-//         dbContext.Database.Migrate();
-//         Console.WriteLine("INFO: Migrações aplicadas com sucesso.");
-//     }
-//     catch (Exception ex)
-//     {
-//         Console.WriteLine($"ERRO: Falha ao aplicar migrações. Detalhes: {ex.Message}");
-//         Console.WriteLine(ex.StackTrace);
-//     }
-// }
+using (var scope = app.Services.CreateScope())
+{
+    try
+    {
+        var dbContext = scope.ServiceProvider.GetRequiredService<AppDbContext>();
+        dbContext.Database.Migrate();
+        Console.WriteLine("INFO: Migrações aplicadas com sucesso.");
+    }
+    catch (Exception ex)
+    {
+        Console.WriteLine($"ERRO: Falha ao aplicar migrações. Detalhes: {ex.Message}");
+        Console.WriteLine(ex.StackTrace);
+    }
+}
 
 
 // Configure the HTTP request pipeline.
