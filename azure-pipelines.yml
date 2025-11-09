@@ -6,7 +6,7 @@ pool:
 
 variables:
   buildConfiguration: 'Release'
-  imageName: 'api-mottu'
+  imageName: 'mottu-api'
   dockerRegistry: 'sprint4acr.azurecr.io'
 
 steps:
@@ -48,7 +48,7 @@ steps:
   displayName: 'Build da imagem Docker'
   inputs:
     containerRegistry: 'sprint4acr'   # nome da Service Connection do ACR
-    repository: 'api-mottu'
+    repository: 'mottu-repository'
     command: build
     Dockerfile: 'sprint_4/CSharp/Dockerfile'
     tags: |
@@ -59,7 +59,7 @@ steps:
   displayName: 'Push da imagem para ACR'
   inputs:
     containerRegistry: 'sprint4acr'
-    repository: 'api-mottu'
+    repository: 'mottu-repository'
     command: push
     tags: |
       $(Build.BuildId)
