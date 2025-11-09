@@ -4,11 +4,6 @@ trigger:
 pool:
   vmImage: 'ubuntu-latest'
 
-variables:
-  buildConfiguration: 'Release'
-  imageName: 'mottu-api'
-  dockerRegistry: 'sprint4acr.azurecr.io'
-
 steps:
 # 1. Instala o .NET SDK
 - task: UseDotNet@2
@@ -41,13 +36,13 @@ steps:
   displayName: 'ACR Login'
   inputs:
     command: login
-    containerRegistry: 'sprint4acr'   # service connection no Azure DevOps
+    containerRegistry: 'acr-mottu-new-connection'   # service connection no Azure DevOps
 
 # 7. Build Docker
 - task: Docker@2
   displayName: 'Build da imagem Docker'
   inputs:
-    containerRegistry: 'sprint4acr'   # nome da Service Connection do ACR
+    containerRegistry: 'acr-mottu-new-connection'   # nome da Service Connection do ACR
     repository: 'mottu-repository'
     command: build
     Dockerfile: 'sprint_4/CSharp/Dockerfile'
@@ -58,7 +53,7 @@ steps:
 - task: Docker@2
   displayName: 'Push da imagem para ACR'
   inputs:
-    containerRegistry: 'sprint4acr'
+    containerRegistry: 'acr-mottu-new-connection'
     repository: 'mottu-repository'
     command: push
     tags: |
