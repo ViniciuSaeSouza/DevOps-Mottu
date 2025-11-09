@@ -13,13 +13,6 @@ using Dominio.Persistencia.Mottu;
 using Infraestrutura.Repositorios.Mottu;
 using Microsoft.EntityFrameworkCore.SqlServer.Infrastructure.Internal;
 
-// TODO: adicionar logica de vinculo usuario patio
-// TODO: adicionar logica de moto com patio
-// TODO: adicionar logica de moto com carrapato
-// TODO: adicionar logica de carrapato com patio
-// 
-
-
 Env.Load();
 
 var builder = WebApplication.CreateBuilder(args);
