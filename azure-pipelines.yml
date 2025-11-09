@@ -44,7 +44,7 @@ steps:
     command: build
     Dockerfile: 'sprint_4/CSharp/Dockerfile'
     tags: |
-      $(Build.BuildId)
+      latest
 
 # 7. Push Docker
 - task: Docker@2
@@ -54,10 +54,10 @@ steps:
     repository: 'mottu-repository'
     command: push
     tags: |
-      $(Build.BuildId)
+      latest
 
 # 8. Gerar arquivo contendo a TAG da imagem
-- script: echo $(Build.BuildId) > $(Build.ArtifactStagingDirectory)/imageTag.txt
+- script: echo latest > $(Build.ArtifactStagingDirectory)/imageTag.txt
   displayName: 'Gerar arquivo de tag para CD'
 
 # 9. Publicar artefato para o CD
