@@ -17,15 +17,15 @@ steps:
   displayName: 'Instalar .NET 8 SDK'
 
 # 2. Restore da solution
-- script: dotnet restore sprint_4/CSharp/API/*.sln
+- script: dotnet restore sprint_4/CSharp/*.sln
   displayName: 'Restore Solution'
 
 # 3. Build
-- script: dotnet build sprint_4/CSharp/API/*.sln --configuration $(buildConfiguration)
+- script: dotnet build sprint_4/CSharp/*.sln --configuration $(buildConfiguration)
   displayName: 'Build Solution'
 
 # 4. Testes
-- script: dotnet test sprint_4/CSharp/API/*.sln --configuration $(buildConfiguration) --no-build
+- script: dotnet test sprint_4/CSharp/*.sln --configuration $(buildConfiguration) --no-build
   displayName: 'Run Tests'
 
 # 5. Login no ACR
