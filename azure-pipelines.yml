@@ -7,7 +7,6 @@ pool:
 variables:
   buildConfiguration: 'Release'
   imageName: 'mottu-api'
-  dockerRegistry: 'sprint4acr.azurecr.io'
 
 steps:
 # 1. Instala o .NET SDK
@@ -17,57 +16,54 @@ steps:
     version: '8.x'
   displayName: 'Instalar .NET 8 SDK'
 
-# 2. Restore (apontando para o .sln)
-- script: dotnet restore sprint_4/CSharp/API/*.sln
+# 2. Restore da solution
+- script: dotnet restore sprint_4/CSharp/*.sln
   displayName: 'Restore Solution'
 
 # 3. Build
-- script: dotnet build sprint_4/CSharp/API/*.sln --configuration $(buildConfiguration)
+- script: dotnet build sprint_4/CSharp/*.sln --configuration $(buildConfiguration)
   displayName: 'Build Solution'
 
 # 4. Testes
-- script: dotnet test sprint_4/CSharp/API/*.sln --configuration $(buildConfiguration) --no-build
+- script: dotnet test sprint_4/CSharp/*.sln --configuration $(buildConfiguration) --no-build
   displayName: 'Run Tests'
 
-# 5. Publicar artefato
-- task: PublishBuildArtifacts@1
-  inputs:
-    PathtoPublish: '$(System.DefaultWorkingDirectory)'
-    ArtifactName: 'drop'
-  displayName: 'Publicar artefatos'
-
-# 6. Login no ACR
+# 5. Login no ACR
 - task: Docker@2
   displayName: 'ACR Login'
   inputs:
     command: login
-    containerRegistry: 'sprint4acr'   # service connection no Azure DevOps
+    containerRegistry: 'acr-mottu-new-connection'
 
-# 7. Build Docker
+# 6. Build Docker
 - task: Docker@2
   displayName: 'Build da imagem Docker'
   inputs:
-    containerRegistry: 'sprint4acr'   # nome da Service Connection do ACR
+    containerRegistry: 'acr-mottu-new-connection'
     repository: 'mottu-repository'
     command: build
     Dockerfile: 'sprint_4/CSharp/Dockerfile'
     tags: |
       $(Build.BuildId)
 
-# 8. Push Docker
+# 7. Push Docker
 - task: Docker@2
   displayName: 'Push da imagem para ACR'
   inputs:
-    containerRegistry: 'sprint4acr'
+    containerRegistry: 'acr-mottu-new-connection'
     repository: 'mottu-repository'
     command: push
     tags: |
       $(Build.BuildId)
 
-# 9. Publicar metadata para CD
+# 8. Gerar arquivo contendo a TAG da imagem
+- script: echo $(Build.BuildId) > $(Build.ArtifactStagingDirectory)/imageTag.txt
+  displayName: 'Gerar arquivo de tag para CD'
+
+# 9. Publicar artefato para o CD
 - task: PublishBuildArtifacts@1
   inputs:
     PathtoPublish: '$(Build.ArtifactStagingDirectory)'
     ArtifactName: 'deploy-info'
     publishLocation: 'Container'
-
+  displayName: 'Publicar artefatos'
